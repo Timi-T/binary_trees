@@ -17,6 +17,20 @@ int max_value(int x, int y)
 }
 
 /**
+ * recurse_tree - function to recurse through tree
+ */
+
+size_t recurse_tree(const binary_tree_t *tree)
+{
+	int h;
+
+	if (!tree)
+		return (-1);
+	h = max_value(recurse_tree(tree->left), recurse_tree(tree->right));
+	return (h + 1);
+}
+
+/**
  * binary_tree_height - function to measure height of a binary tree
  *
  * @tree: node of tree to be measured
@@ -25,11 +39,10 @@ int max_value(int x, int y)
  */
 size_t binary_tree_height(const binary_tree_t *tree)
 {
-	int h;
+	size_t height;
 
 	if (!tree)
-		return (-1);
-	h = max_value(binary_tree_height(tree->left),
-			binary_tree_height(tree->right));
-	return (h + 1);
+		return (0);
+	height = recurse_tree(tree);
+	return (height);
 }
