@@ -18,6 +18,10 @@ int max_value(int x, int y)
 
 /**
  * recurse_tree - function to recurse through tree
+ *
+ * @tree: tree to perform recursion on
+ *
+ * Return: height of tree
  */
 
 size_t recurse_tree(const binary_tree_t *tree)
